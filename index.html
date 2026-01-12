@@ -23,6 +23,7 @@
     <link rel="stylesheet" href="css/general.css" />
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/queries.css" />
+    <link rel="stylesheet" href="assets/css/styles.css" />
 
     <script
       type="module"
@@ -38,6 +39,7 @@
       src="https://unpkg.com/smoothscroll-polyfill@0.4.4/dist/smoothscroll.min.js"
     ></script>
     <script defer src="js/script.js"></script>
+    <script defer src="assets/js/main.js"></script>
 
     <title>ReKainos &mdash; Renew. Become.</title>
   </head>
@@ -55,7 +57,14 @@
             <a class="main-nav-link" href="#testimonials">Languages</a>
           </li>
           <li><a class="main-nav-link" href="#pricing">Pricing</a></li>
-          <li><a class="main-nav-link nav-cta" href="#cta">Waitlist</a></li>
+          <li>
+            <a
+              class="main-nav-link nav-cta"
+              href="#waitlist-modal"
+              data-open-waitlist="true"
+              >Waitlist</a
+            >
+          </li>
         </ul>
       </nav>
 
@@ -78,11 +87,19 @@
               structured summaries, immersive audio, and personalized Renewal
               Tracks designed to change what you do, not just what you know.
             </p>
-            <a href="#cta" class="btn btn--full margin-right-sm"
+            <a
+              href="#waitlist-modal"
+              class="btn btn--full margin-right-sm"
+              data-open-waitlist="true"
               >Start free</a
             >
 
-            <a href="#meals" class="btn btn--outline">Explore features</a>
+            <a
+              href="#waitlist-modal"
+              class="btn btn--outline"
+              data-open-waitlist="true"
+              >Explore features</a
+            >
             <div class="delivered-meals">
               <div class="delivered-imgs">
                 <img src="img/customers/customer-1.jpg" alt="Customer photo" />
@@ -319,7 +336,9 @@
         </div>
 
         <div class="container all-recipes">
-          <a href="#" class="link">View plans &rarr;</a>
+          <a href="#waitlist-modal" class="link" data-open-waitlist="true"
+            >View plans &rarr;</a
+          >
         </div>
       </section>
 
@@ -508,7 +527,12 @@
               </li>
             </ul>
             <div class="plan-sing-up">
-              <a href="#" class="btn btn--full">Get started</a>
+              <a
+                href="#waitlist-modal"
+                class="btn btn--full"
+                data-open-waitlist="true"
+                >Get started</a
+              >
             </div>
           </div>
 
@@ -539,7 +563,12 @@
               </li>
             </ul>
             <div class="plan-sing-up">
-              <a href="#" class="btn btn--full">Start Premium</a>
+              <a
+                href="#waitlist-modal"
+                class="btn btn--full"
+                data-open-waitlist="true"
+                >Start Premium</a
+              >
             </div>
           </div>
         </div>
@@ -593,46 +622,15 @@
                 inbox.
               </p>
 
-              <form class="cta-form" name="sign-up" netlify>
-                <div>
-                  <label for="full-name">Full name</label>
-                  <input
-                    id="full-name"
-                    type="text"
-                    placeholder="John Smith"
-                    name="full-name"
-                    required
-                  />
-                </div>
-
-                <div>
-                  <label for="email">Email address</label>
-                  <input
-                    id="email"
-                    type="email"
-                    placeholder="me@example.com"
-                    name="email"
-                    required
-                  />
-                </div>
-
-                <div>
-                  <label for="select-where">What drew you here?</label>
-                  <select id="select-where" name="select-where" required>
-                    <option value="">Please choose one option:</option>
-                    <option value="friends">A friend</option>
-                    <option value="article">An article or interview</option>
-                    <option value="podcast">A podcast</option>
-                    <option value="creator">A creator</option>
-                    <option value="others">Other</option>
-                  </select>
-                </div>
-
-                <button class="btn btn--form">Join the waitlist</button>
-
-                <!-- <input type="checkbox" />
-                <input type="number" /> -->
-              </form>
+              <div class="cta-form">
+                <a
+                  class="btn btn--form"
+                  href="#waitlist-modal"
+                  data-open-waitlist="true"
+                >
+                  Join the waitlist
+                </a>
+              </div>
             </div>
             <div
               class="cta-img-box"
@@ -720,5 +718,79 @@
         </nav>
       </div>
     </footer>
+
+    <div
+      id="waitlist-modal"
+      class="waitlist-modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="waitlist-modal-title"
+    >
+      <div class="waitlist-modal__dialog" role="document">
+        <a
+          href="#"
+          class="waitlist-modal__close"
+          aria-label="Close waitlist form"
+          data-close-waitlist="true"
+        >
+          &times;
+        </a>
+        <h2 class="heading-secondary" id="waitlist-modal-title">
+          Join the waitlist
+        </h2>
+        <p class="waitlist-modal__subtitle">
+          Get early access updates and launch timing.
+        </p>
+        <form
+          class="cta-form waitlist-form"
+          method="POST"
+          action="https://formspree.io/f/maqwknoe"
+        >
+          <div>
+            <label for="waitlist-name">Full name (optional)</label>
+            <input
+              id="waitlist-name"
+              type="text"
+              placeholder="John Smith"
+              name="name"
+            />
+          </div>
+
+          <div>
+            <label for="waitlist-email">Email address</label>
+            <input
+              id="waitlist-email"
+              type="email"
+              placeholder="me@example.com"
+              name="email"
+              required
+            />
+          </div>
+
+          <div>
+            <label for="waitlist-language">Language preference (optional)</label>
+            <select id="waitlist-language" name="language">
+              <option value="">Select a language</option>
+              <option value="english">English</option>
+              <option value="spanish">Spanish</option>
+              <option value="french">French</option>
+              <option value="german">German</option>
+              <option value="portuguese">Portuguese</option>
+              <option value="japanese">Japanese</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+
+          <button class="btn btn--form waitlist-modal__submit" type="submit">
+            Join the waitlist
+          </button>
+        </form>
+        <p
+          class="waitlist-modal__message"
+          role="status"
+          aria-live="polite"
+        ></p>
+      </div>
+    </div>
   </body>
 </html>
