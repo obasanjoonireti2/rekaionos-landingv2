@@ -160,6 +160,63 @@ html[data-theme="dark"] {
   );
 }
 
+/* REKAINOS — MOCKUP BACKDROP TOKENS */
+:root {
+  --mockup-backdrop-ink: color-mix(
+    in oklab,
+    var(--color-ink-950) 75%,
+    black
+  );
+  --mockup-backdrop-accent: var(--color-brand-accent);
+  --mockup-backdrop-primary: var(--color-brand-primary);
+  --mockup-backdrop-opacity-1: 16%;
+  --mockup-backdrop-opacity-2: 10%;
+  --mockup-backdrop-opacity-3: 6%;
+  --mockup-backdrop-blur: 20px;
+  --mockup-backdrop-ring-alpha: 12%;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --mockup-backdrop-ink: color-mix(
+      in oklab,
+      var(--color-ink-900) 72%,
+      black
+    );
+    --mockup-backdrop-opacity-1: 26%;
+    --mockup-backdrop-opacity-2: 18%;
+    --mockup-backdrop-opacity-3: 12%;
+    --mockup-backdrop-blur: 24px;
+    --mockup-backdrop-ring-alpha: 18%;
+  }
+}
+
+html[data-theme="light"] {
+  --mockup-backdrop-ink: color-mix(
+    in oklab,
+    var(--color-ink-900) 72%,
+    black
+  );
+  --mockup-backdrop-opacity-1: 26%;
+  --mockup-backdrop-opacity-2: 18%;
+  --mockup-backdrop-opacity-3: 12%;
+  --mockup-backdrop-blur: 24px;
+  --mockup-backdrop-ring-alpha: 18%;
+}
+
+html[data-theme="dark"] {
+  --mockup-backdrop-ink: color-mix(
+    in oklab,
+    var(--color-ink-950) 75%,
+    black
+  );
+  --mockup-backdrop-opacity-1: 16%;
+  --mockup-backdrop-opacity-2: 10%;
+  --mockup-backdrop-opacity-3: 6%;
+  --mockup-backdrop-blur: 20px;
+  --mockup-backdrop-ring-alpha: 12%;
+}
+
 body {
   background: var(--color-bg-default);
   color: var(--color-text-primary);
@@ -218,6 +275,152 @@ body {
 .cta *:focus {
   outline: none;
   box-shadow: 0 0 0 0.3rem var(--input-focus-ring);
+}
+
+/* REKAINOS — MOCKUP BACKDROP STYLES */
+.step-img-box::before,
+.step-img-box::after {
+  content: none;
+}
+
+.mockup-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.mockup-backdrop {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: clamp(18rem, 60%, 32rem);
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(var(--mockup-backdrop-blur));
+  z-index: 0;
+}
+
+.mockup-backdrop::before,
+.mockup-backdrop::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+}
+
+.mockup-backdrop--ripple::before {
+  background: repeating-radial-gradient(
+    circle at 50% 50%,
+    color-mix(
+        in oklab,
+        var(--mockup-backdrop-primary) var(--mockup-backdrop-opacity-1),
+        transparent
+      )
+      0%,
+    color-mix(
+        in oklab,
+        var(--mockup-backdrop-primary) var(--mockup-backdrop-opacity-3),
+        transparent
+      )
+      16%,
+    transparent 32%
+  );
+  mask-image: radial-gradient(
+    circle at 50% 50%,
+    var(--mockup-backdrop-ink) 0%,
+    color-mix(in oklab, var(--mockup-backdrop-ink) 72%, transparent) 55%,
+    transparent 80%
+  );
+}
+
+.mockup-backdrop--ripple::after {
+  background: radial-gradient(
+    circle at 50% 50%,
+    color-mix(
+        in oklab,
+        var(--mockup-backdrop-accent) var(--mockup-backdrop-opacity-2),
+        transparent
+      )
+      0%,
+    transparent 70%
+  );
+  opacity: 0.7;
+}
+
+.mockup-backdrop--rings::before {
+  background: repeating-radial-gradient(
+    circle at 50% 50%,
+    color-mix(
+        in oklab,
+        var(--mockup-backdrop-ink) var(--mockup-backdrop-ring-alpha),
+        transparent
+      )
+      0%,
+    transparent 18%,
+    color-mix(
+        in oklab,
+        var(--mockup-backdrop-primary) var(--mockup-backdrop-opacity-3),
+        transparent
+      )
+      24%,
+    transparent 40%
+  );
+  mask-image: radial-gradient(
+    circle at 50% 50%,
+    var(--mockup-backdrop-ink) 0%,
+    color-mix(in oklab, var(--mockup-backdrop-ink) 78%, transparent) 60%,
+    transparent 86%
+  );
+}
+
+.mockup-backdrop--rings::after {
+  background: radial-gradient(
+    circle at 50% 50%,
+    color-mix(
+        in oklab,
+        var(--mockup-backdrop-accent) var(--mockup-backdrop-opacity-3),
+        transparent
+      )
+      0%,
+    transparent 65%
+  );
+}
+
+.mockup-backdrop--spotlight::before {
+  background: radial-gradient(
+    circle at 50% 45%,
+    color-mix(
+        in oklab,
+        var(--mockup-backdrop-primary) var(--mockup-backdrop-opacity-1),
+        transparent
+      )
+      0%,
+    transparent 68%
+  );
+}
+
+.mockup-backdrop--spotlight::after {
+  background: radial-gradient(
+    circle at 65% 40%,
+    color-mix(
+        in oklab,
+        var(--mockup-backdrop-accent) var(--mockup-backdrop-opacity-2),
+        transparent
+      )
+      0%,
+    transparent 70%
+  );
+  mix-blend-mode: screen;
+}
+
+.mockup-img {
+  position: relative;
+  z-index: 1;
+  display: block;
 }
 
 .waitlist-modal {
