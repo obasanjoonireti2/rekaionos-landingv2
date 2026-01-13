@@ -173,9 +173,6 @@ body {
 
 .section-how .step-img {
   border-radius: inherit;
-  display: block;
-  width: 100%;
-  height: auto;
 }
 
 *:focus-visible {
