@@ -166,13 +166,17 @@ body {
   font-family: var(--font-family-base);
 }
 
-.section-how .step-img-box {
+.section-how .step-img-frame {
+  width: 35%;
   border-radius: var(--radius-lg);
   overflow: hidden;
+  display: inline-block;
 }
 
-.section-how .step-img {
-  border-radius: inherit;
+.section-how .step-img-frame .step-img {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
 *:focus-visible {
