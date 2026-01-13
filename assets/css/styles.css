@@ -166,6 +166,18 @@ body {
   font-family: var(--font-family-base);
 }
 
+.section-how .step-img-box {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.section-how .step-img {
+  border-radius: inherit;
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
 *:focus-visible {
   outline: 2px solid var(--color-feedback-highlight);
   outline-offset: 2px;
