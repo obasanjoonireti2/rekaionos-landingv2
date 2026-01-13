@@ -403,3 +403,36 @@ html[data-theme="dark"] .copyright {
 html[data-theme="dark"] .cta-text-box {
   color: var(--color-text-primary);
 }
+
+/* Mockup accents */
+.mock-accent--zigzag {
+  position: relative;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.mock-accent--zigzag::before {
+  content: "";
+  position: absolute;
+  inset: -20% -30%;
+  background: url("../../img/zigzag-wave.svg") no-repeat center;
+  background-size: cover;
+  opacity: 0.08;
+  transform: translate(12%, -6%) rotate(-8deg) scale(1.15);
+  z-index: -1;
+  pointer-events: none;
+}
+
+.mock-accent--zigzag::after {
+  content: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  html:not([data-theme]) .mock-accent--zigzag::before {
+    opacity: 0.13;
+  }
+}
+
+html[data-theme="dark"] .mock-accent--zigzag::before {
+  opacity: 0.13;
+}
