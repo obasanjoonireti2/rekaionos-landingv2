@@ -302,6 +302,19 @@ body {
   overflow: hidden;
 }
 
+.footer-tagline {
+  font-size: 1.8rem;
+  font-weight: 500;
+  margin-bottom: 1.2rem;
+}
+
+.footer-description {
+  font-size: 1.6rem;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
 @media (max-width: 34em) {
   .waitlist-modal__dialog {
     padding: 2.4rem;
